@@ -4,8 +4,12 @@ body, html{
 body{
   margin: 0px;
   background-color:#444;
+  background-image: url("http://pre08.deviantart.net/92be/th/pre/f/2012/017/b/c/my_favorite_batcave_render_by_dipperdon-d4moic3.jpg");
   font-size: 18px;
   font-family: 'Roboto', sans-serif;
+  background-position: center;
+
+  background-size: cover;
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
@@ -30,6 +34,8 @@ body, a:link, a:visited, a:active{
 }
 
 @keyframes orbit {
-	from { 	transform: rotate(0deg) translateX(150px); }
-	to   {  transform: rotate(360deg) translateX(150px); }
+	from { 	transform: rotate(360deg) translateX(250px); }
+	to   {  transform: rotate(0deg) translateX(250px); }
 }
+
+

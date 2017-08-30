@@ -1,12 +1,12 @@
-var makeSuperHeroDancer = function(top, left, timeBetweenSteps) {
-  makeDancer.call(this, top, left, timeBetweenSteps);
+var SuperHeroDancer = function(top, left, timeBetweenSteps) {
+  Dancer.call(this, top, left, timeBetweenSteps);
   this.timeBetweenSteps = timeBetweenSteps;
   this.$image = $('<img src="src/resource/superhero.gif">');
 };
 
-makeSuperHeroDancer.prototype = Object.create(makeDancer.prototype);
-makeSuperHeroDancer.prototype.constructor = makeSuperHeroDancer;
-makeSuperHeroDancer.prototype.step = function() {
-  makeDancer.prototype.step.call(this, this.timeBetweenSteps);
+SuperHeroDancer.prototype = Object.create(Dancer.prototype);
+SuperHeroDancer.prototype.constructor = SuperHeroDancer;
+SuperHeroDancer.prototype.step = function() {
+  Dancer.prototype.step.call(this, this.timeBetweenSteps);
 
 };

@@ -14,55 +14,27 @@ $(document).ready(function() {
     );
     dancer.loadImage();
     $('body').append(dancer.$node);
+    $('.dancer').draggable();
   });
 
-  $('#interact').on('click', firstClick);
-
-  function firstClick() {
+  $('#interact').on('click', function() {
     var $dancers = $('.dancer');
     var dancer1 = $dancers[Math.floor(Math.random() * $dancers.length)];
     var dancer2 = $dancers[Math.floor(Math.random() * $dancers.length)];
-    movedDancers.push(dancer1, dancer2);
 
-    var randomTop = $('body').height() * Math.random();
-    var randomLeft = $('body').width() * Math.random();
+    var height = $('body').height();
+    var width = $('body').width();
 
-    $(dancer1).css({'top': randomTop, 'left': randomLeft});
-    $(dancer2).css({'top': randomTop, 'left': randomLeft + 500});
-    $('#interact').off('click').on('click', secondClick);
-  };
+    $(dancer1).animate({top: height/2, left: width/2 - 50}, 500);
+    $(dancer2).animate({top: height/2, left: width/2 + 50}, 500);
+  });
 
-  function secondClick() {
-    $(movedDancers[0]).animate({top:"-=50px", left: "30px"},500);
-    $(movedDancers[1]).animate({top:"-=70px", left: "100px"},500);
-    // movedDancers.forEach(element => $(element).animate({top: "500"},1000))
-    // this.$node.animate({height: "1000px"}, 1000);
-    $('#interact').off('click').on('click', firstClick);
-  };
-
-
-  //
-  // $('#interact').on('click', function() {
-  //   $('#interact').toggle(function() {
-  //     var $dancers = $('.dancer');
-  //     var dancer1 = $dancers[Math.floor(Math.random() * $dancers.length)];
-  //     var dancer2 = $dancers[Math.floor(Math.random() * $dancers.length)];
-  //     movedDancers.push(dancer1, dancer2);
-  //
-  //     var randomTop = $('body').height() * Math.random();
-  //     var randomLeft = $('body').width() * Math.random();
-  //
-  //     $(dancer1).css({'top': randomTop, 'left': randomLeft});
-  //     $(dancer2).css({'top': randomTop, 'left': randomLeft + 50});
-  //   }, function() { movedDancers.forEach(element => $(element).hide()) }
-  //   );
-  // });
 
   $('#lineup').on('click', function() {
     var $dancers = $('.dancer');
     $dancers.css({'top': '40%'});
     var width = $('body').width() / $dancers.length;
-    // debugger;
+
     $.each('.dancers', function(index, dancer) {
       dancer.css({'left': index * width});
     });
@@ -75,16 +47,5 @@ $(document).ready(function() {
   $(document.body).on('mouseleave', '.batman', function() {
     $(this).toggle();
   });
-
-  // var interact = function() {
-  //   var distances = [];
-  //   var $dancers = $('.dancer');
-  //   $.each($dancers, function(i, dancer1) {
-  //     $.each($dancers, function(j, dancer2) {
-  //       distances[i][j] = dancer;
-  //     });
-  //   });
-  //   console.log(distances);
-  // };
 
 });

@@ -5,7 +5,7 @@ describe('blinkyDancer', function() {
 
   beforeEach(function() {
     clock = sinon.useFakeTimers();
-    blinkyDancer = new makeBlinkyDancer(10, 20, timeBetweenSteps);
+    blinkyDancer = new BlinkyDancer(10, 20, timeBetweenSteps);
   });
 
   it('should have a jQuery $node object', function() {
@@ -26,6 +26,21 @@ describe('blinkyDancer', function() {
       expect(blinkyDancer.step.callCount).to.be.equal(1);
       clock.tick(timeBetweenSteps);
       expect(blinkyDancer.step.callCount).to.be.equal(2);
+    });
+  });
+
+  describe('image', function() {
+    it('classes should have different images', function() {
+      var basicDancer = new Dancer(100, 100, 500);
+      var superHero = new SuperHeroDancer(100, 100, 500);
+      expect(basicDancer.$image).to.not.equal(superHero.$image);
+    });
+  });
+
+  describe('constructor', function() {
+    it('constructors should be set correctly', function() {
+      var batman = new BatmanDancer(100, 100, 500);
+      expect(batman.constructor).to.deep.equal(BatmanDancer);
     });
   });
 });
